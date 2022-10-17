@@ -1,9 +1,10 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System;
-
-// using OOP3.source.Person;
-// using OOP3.source.Log;
-// using OOP3.source.Input;
+using System.Diagnostics;
+//
+using OOP3.source.CLI;
+using OOP3.source.Core;
+//
 using OOP3.source.GUI.Forms;
 
 namespace OOP3
@@ -18,14 +19,9 @@ namespace OOP3
     // }
     class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());
         }
