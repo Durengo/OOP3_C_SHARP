@@ -29,7 +29,9 @@ namespace OOP3.source.Core
             }
         }
 
-        bool Login(User user, string name, string pass)
+        private User[] users;
+
+        public bool Login(User user, string name, string pass)
         {
             if(name != user.Username)
             {
@@ -41,6 +43,12 @@ namespace OOP3.source.Core
                 Log.ERROR($"Password is incorrect!");
                 return false;
             }
+            return true;
+        }
+
+        public bool isInstance()
+        {
+            if (instance == null) return false;
             return true;
         }
 
