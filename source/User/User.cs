@@ -14,6 +14,7 @@ namespace OOP3.source.User
         private string AccountName;
         private string AccountPassword;
         private AccountType AccountType;
+        private string AvatarImage;
 
         public User()
         : base("ANONYMOUS", "UNDEFINED", new DateOnly(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day))
@@ -28,6 +29,15 @@ namespace OOP3.source.User
             AccountName = username;
             AccountPassword = password;
             AccountType = AccountType.REGISTERED;
+        }
+        public User(string username, string password, string avatar, string name, string surname, DateOnly birthday)
+        : base(name, surname, birthday)
+        {
+            AccountName = username;
+            AccountPassword = password;
+            AccountType = AccountType.REGISTERED;
+            AvatarImage = avatar;
+            //CopyImageToRelativePath(avatar);
         }
         public User(string username, string password, AccountType type, string name, string surname, DateOnly birthday)
         : base(name, surname, birthday)
@@ -51,6 +61,17 @@ namespace OOP3.source.User
         {
             get { return AccountType; }
             set { Type = value; }
+        }
+        public string Avatar
+        {
+            get { return AvatarImage; }
+            set { CopyImageToRelativePath(value); AvatarImage = value; }
         } 
+        private void CopyImageToRelativePath(string path)
+        {
+            string relativePath = Directory.GetCurrentDirectory();
+            relativePath = relativePath + @"\data\images";
+            File.Copy(@path, @relativePath);
+        }
     }
 }

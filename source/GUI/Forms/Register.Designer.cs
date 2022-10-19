@@ -52,6 +52,9 @@
             this.nameErr1 = new System.Windows.Forms.PictureBox();
             this.surnameErr1 = new System.Windows.Forms.PictureBox();
             this.dateErr1 = new System.Windows.Forms.PictureBox();
+            this.imagePath = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.userCount = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.avatarBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nameErr1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.surnameErr1)).BeginInit();
@@ -306,11 +309,41 @@
             this.dateErr1.TabStop = false;
             this.dateErr1.Click += new System.EventHandler(this.dateErr1_Click);
             // 
+            // imagePath
+            // 
+            this.imagePath.AutoSize = true;
+            this.imagePath.Location = new System.Drawing.Point(12, 9);
+            this.imagePath.Name = "imagePath";
+            this.imagePath.Size = new System.Drawing.Size(67, 15);
+            this.imagePath.TabIndex = 43;
+            this.imagePath.Text = "image path";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(476, 290);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(66, 15);
+            this.label1.TabIndex = 44;
+            this.label1.Text = "user count:";
+            // 
+            // userCount
+            // 
+            this.userCount.AutoSize = true;
+            this.userCount.Location = new System.Drawing.Point(547, 290);
+            this.userCount.Name = "userCount";
+            this.userCount.Size = new System.Drawing.Size(38, 15);
+            this.userCount.TabIndex = 45;
+            this.userCount.Text = "label2";
+            // 
             // Register
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.userCount);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.imagePath);
             this.Controls.Add(this.dateErr1);
             this.Controls.Add(this.surnameErr1);
             this.Controls.Add(this.nameErr1);
@@ -372,5 +405,8 @@
         private PictureBox nameErr1;
         private PictureBox surnameErr1;
         private PictureBox dateErr1;
+        private Label imagePath;
+        private Label label1;
+        private Label userCount;
     }
 }

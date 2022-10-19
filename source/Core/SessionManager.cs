@@ -14,7 +14,7 @@ namespace OOP3.source.Core
         private static SessionManager instance = null;
         private static readonly object padlock = new object();
         public List<Form> openForms = new List<Form>();
-        private List<User> users = new List<User>();
+        public List<User> users = new List<User>();
         public User currentUser = null;
         private int UserId = -1;
 

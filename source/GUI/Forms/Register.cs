@@ -12,7 +12,7 @@ namespace OOP3.source.GUI.Forms
 {
     using OOP3.source.Core;
     using OOP3.source.Input;
-
+    using OOP3.source.User;
     public partial class Register : Form
     {
         public Register()
@@ -78,6 +78,10 @@ namespace OOP3.source.GUI.Forms
                 dateDisplay.Text = datePicker.SelectionRange.Start.ToString("yyyy-MM-dd");
                 usernameDisplay.Text = usernameBox.Text;
                 passwordDisplay.Text = passwordBox.Text;
+                //SessionManager.Instance.users.Add(new User(nameBox.Text, surnameBox.Text, imagePath.Text, usernameBox.Text, passwordBox.Text, new DateOnly(int.Parse(datePicker.SelectionRange.Start.ToString("yyyy")), int.Parse(datePicker.SelectionRange.Start.ToString("MM")), int.Parse(datePicker.SelectionRange.Start.ToString("dd")))));
+                SessionManager.Instance.users.Add(new User(nameBox.Text, surnameBox.Text, usernameBox.Text, passwordBox.Text, new DateOnly(int.Parse(datePicker.SelectionRange.Start.ToString("yyyy")), int.Parse(datePicker.SelectionRange.Start.ToString("MM")), int.Parse(datePicker.SelectionRange.Start.ToString("dd")))));
+                userCount.Text = new String(SessionManager.Instance.users.Count.ToString);
+                // TODO: FIX
             }
         }
 
@@ -88,6 +92,7 @@ namespace OOP3.source.GUI.Forms
             {
                 string selectedFile = openFileDialog1.FileName;
                 avatarBox.ImageLocation = selectedFile;
+                imagePath.Text = selectedFile;
                 //avatarBox.Image = Image.FromFile(selectedFile);
                 //avatarBox.Image = System.Drawing.Image.FromFile(selectedFile);\
             }
@@ -96,6 +101,7 @@ namespace OOP3.source.GUI.Forms
         private void backButton1_Click(object sender, EventArgs e)
         {
             SessionManager.Instance.openForms[2].Hide();
+            reset_All();
             SessionManager.Instance.openForms[0].Show();
         }
 
@@ -134,6 +140,25 @@ namespace OOP3.source.GUI.Forms
             PopUpError popup = new PopUpError("You cannot register if you are not at least 14 years old.");
             DialogResult dialogresult = popup.ShowDialog();
             popup.Dispose();
+        }
+
+        private void reset_All()
+        {
+            avatarBox.ImageLocation = "";
+            nameErr1.Hide();
+            surnameErr1.Hide();
+            dateErr1.Hide();
+            nameDisplay.Text = "";
+            surnameDisplay.Text = "";
+            dateDisplay.Text = "";
+            usernameDisplay.Text = "";
+            passwordDisplay.Text = "";
+            nameBox.Text = "";
+            surnameBox.Text = "";
+            usernameBox.Text = "";
+            usernameBox.Text = "";
+            passwordBox.Text = "";
+            datePicker.SetDate(DateTime.Today);
         }
     }
 }
