@@ -34,7 +34,6 @@
             this.passwordBox = new System.Windows.Forms.TextBox();
             this.usernameLabel = new System.Windows.Forms.Label();
             this.usernameBox = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // loginButton1
@@ -102,24 +101,12 @@
             this.usernameBox.Size = new System.Drawing.Size(134, 35);
             this.usernameBox.TabIndex = 14;
             // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(341, 414);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(83, 19);
-            this.checkBox1.TabIndex = 18;
-            this.checkBox1.Text = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(784, 561);
-            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.passwordLabel);
             this.Controls.Add(this.passwordBox);
             this.Controls.Add(this.usernameLabel);
@@ -142,6 +129,5 @@
         private TextBox passwordBox;
         private Label usernameLabel;
         private TextBox usernameBox;
-        private CheckBox checkBox1;
     }
 }

@@ -11,9 +11,9 @@ using System.Windows.Forms;
 namespace OOP3.source.GUI.Forms
 {
     using source.Core;
-    public partial class PostLogin : Form
+    public partial class AdminPostLogin : Form
     {
-        public PostLogin()
+        public AdminPostLogin()
         {
             InitializeComponent();
         }
@@ -26,9 +26,37 @@ namespace OOP3.source.GUI.Forms
             passwordDisplay.Text = SessionManager.Instance.currentUser.Password;
             avatarBox.Image = SessionManager.Instance.currentUser.Avatar;
         }
-        private void logoutButton1_Click(object sender, EventArgs e)
+
+        private void AdminPostLogin_Closing(object sender, EventArgs e)
         {
-            SessionManager.Instance.openForms[3].Hide();
+            for (int i = 0; i < SessionManager.Instance.openForms.Count; i++)
+            {
+                SessionManager.Instance.openForms[SessionManager.Instance.openForms.Count - 1 - i].Close();
+            }
+        }
+
+        private void changePassword_Click(object sender, EventArgs e)
+        {
+            ChangePassword popup = new ChangePassword();
+            DialogResult dialogresult = popup.ShowDialog();
+            popup.Dispose();
+        }
+
+        private void passwordShow_CheckedChanged_1(object sender, EventArgs e)
+        {
+            if (passwordShow.CheckState == CheckState.Unchecked)
+            {
+                passwordDisplay.UseSystemPasswordChar = true;
+            }
+            else
+            {
+                passwordDisplay.UseSystemPasswordChar = false;
+            }
+        }
+
+        private void logoutButton1_Click_1(object sender, EventArgs e)
+        {
+            SessionManager.Instance.openForms[4].Hide();
             SessionManager.Instance.Logout();
             nameDisplay.Text = "";
             surnameDisplay.Text = "";
@@ -41,31 +69,11 @@ namespace OOP3.source.GUI.Forms
             SessionManager.Instance.openForms[0].Show();
         }
 
-        private void PostLogin_Closing(object sender, EventArgs e)
+        private void deleteUser_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < SessionManager.Instance.openForms.Count; i++)
-            {
-                SessionManager.Instance.openForms[SessionManager.Instance.openForms.Count - 1 - i].Close();
-            }
-        }
-
-        private void passwordShow_CheckedChanged(object sender, EventArgs e)
-        {
-            if(passwordShow.CheckState == CheckState.Unchecked)
-            {
-                passwordDisplay.UseSystemPasswordChar = true;
-            }
-            else
-            {
-                passwordDisplay.UseSystemPasswordChar = false;
-            }
-        }
-
-        private void changePassword_Click(object sender, EventArgs e)
-        {
-            ChangePassword popup = new ChangePassword();
-            DialogResult dialogresult = popup.ShowDialog();
-            popup.Dispose();
+            var Form = (RemoveUsers)SessionManager.Instance.openForms[5];
+            Form.UpdateUserList();
+            Form.ShowDialog();
         }
 
         private void imageButton_Click(object sender, EventArgs e)

@@ -15,12 +15,15 @@ namespace OOP3.source.GUI.Forms
     using OOP3.source.User;
     public partial class Register : Form
     {
+        private string ImageFullPath = "";
         public Register()
         {
             InitializeComponent();
             nameErr1.Hide();
             surnameErr1.Hide();
             dateErr1.Hide();
+            datePicker.MaxDate = DateTime.Today;
+            datePicker.MinDate = DateTime.Today.AddYears(-100);
         }
 
         private void nameDisplay_TextChanged(object sender, EventArgs e) { }
@@ -70,19 +73,49 @@ namespace OOP3.source.GUI.Forms
             }
             else
             {
-                nameErr1.Hide();
-                surnameErr1.Hide();
-                dateErr1.Hide();
-                nameDisplay.Text = nameBox.Text;
-                surnameDisplay.Text = surnameBox.Text;
-                dateDisplay.Text = datePicker.SelectionRange.Start.ToString("yyyy-MM-dd");
-                usernameDisplay.Text = usernameBox.Text;
-                passwordDisplay.Text = passwordBox.Text;
-                //SessionManager.Instance.users.Add(new User(nameBox.Text, surnameBox.Text, imagePath.Text, usernameBox.Text, passwordBox.Text, new DateOnly(int.Parse(datePicker.SelectionRange.Start.ToString("yyyy")), int.Parse(datePicker.SelectionRange.Start.ToString("MM")), int.Parse(datePicker.SelectionRange.Start.ToString("dd")))));
-                SessionManager.Instance.users.Add(new User(nameBox.Text, surnameBox.Text, usernameBox.Text, passwordBox.Text, new DateOnly(int.Parse(datePicker.SelectionRange.Start.ToString("yyyy")), int.Parse(datePicker.SelectionRange.Start.ToString("MM")), int.Parse(datePicker.SelectionRange.Start.ToString("dd")))));
-                userCount.Text = new String(SessionManager.Instance.users.Count.ToString);
-                // TODO: FIX
+                if(ImageFullPath != "")
+                {
+                    if(!SessionManager.Instance.CreateUser(usernameBox.Text, passwordBox.Text, ImageFullPath, nameBox.Text, surnameBox.Text, new DateOnly(int.Parse(datePicker.SelectionRange.Start.ToString("yyyy")), int.Parse(datePicker.SelectionRange.Start.ToString("MM")), int.Parse(datePicker.SelectionRange.Start.ToString("dd")))))
+                    {
+                        usernameErr.Show();
+                    }
+                    else
+                    {
+                        nameErr1.Hide();
+                        surnameErr1.Hide();
+                        dateErr1.Hide();
+                        usernameErr.Hide();
+                        nameDisplay.Text = nameBox.Text;
+                        surnameDisplay.Text = surnameBox.Text;
+                        dateDisplay.Text = datePicker.SelectionRange.Start.ToString("yyyy-MM-dd");
+                        usernameDisplay.Text = usernameBox.Text;
+                        passwordDisplay.Text = passwordBox.Text;
+                    }
+                }
+                else
+                {
+                    if(!SessionManager.Instance.CreateUser(usernameBox.Text, passwordBox.Text, nameBox.Text, surnameBox.Text, new DateOnly(int.Parse(datePicker.SelectionRange.Start.ToString("yyyy")), int.Parse(datePicker.SelectionRange.Start.ToString("MM")), int.Parse(datePicker.SelectionRange.Start.ToString("dd")))))
+                    {
+                        usernameErr.Show();
+                    }
+                    else
+                    {
+                        nameErr1.Hide();
+                        surnameErr1.Hide();
+                        dateErr1.Hide();
+                        usernameErr.Hide();
+                        nameDisplay.Text = nameBox.Text;
+                        surnameDisplay.Text = surnameBox.Text;
+                        dateDisplay.Text = datePicker.SelectionRange.Start.ToString("yyyy-MM-dd");
+                        usernameDisplay.Text = usernameBox.Text;
+                        passwordDisplay.Text = passwordBox.Text;
+                    }
+                }
+                
+                
             }
+            userCount.Text = SessionManager.Instance.users.Count.ToString();
+
         }
 
         private void imageButton_Click(object sender, EventArgs e)
@@ -93,6 +126,7 @@ namespace OOP3.source.GUI.Forms
                 string selectedFile = openFileDialog1.FileName;
                 avatarBox.ImageLocation = selectedFile;
                 imagePath.Text = selectedFile;
+                ImageFullPath = selectedFile;
                 //avatarBox.Image = Image.FromFile(selectedFile);
                 //avatarBox.Image = System.Drawing.Image.FromFile(selectedFile);\
             }
@@ -148,6 +182,7 @@ namespace OOP3.source.GUI.Forms
             nameErr1.Hide();
             surnameErr1.Hide();
             dateErr1.Hide();
+            usernameErr.Hide();
             nameDisplay.Text = "";
             surnameDisplay.Text = "";
             dateDisplay.Text = "";

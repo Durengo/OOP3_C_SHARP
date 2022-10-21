@@ -51,6 +51,31 @@ namespace OOP3.source.Core
             return false;
         }
 
+        public bool CreateUser(string username, string password, string name, string surname, DateOnly birthday)
+        {
+            for(int i = 0; i < users.Count; i++)
+            {
+                if(users[i].Username == username)
+                {
+                    return false;
+                }
+            }
+            SessionManager.Instance.users.Add(new User(username, password, name, surname, birthday));
+            return true;
+        }
+        public bool CreateUser(string username, string password, string imagePath, string name, string surname, DateOnly birthday)
+        {
+            for(int i = 0; i < users.Count; i++)
+            {
+                if(users[i].Username == username)
+                {
+                    return false;
+                }
+            }
+            SessionManager.Instance.users.Add(new User(username, password, imagePath, name, surname, birthday));
+            return true;
+        }
+
         public void Logout()
         {
             currentUser = null;

@@ -55,6 +55,7 @@
             this.imagePath = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.userCount = new System.Windows.Forms.Label();
+            this.usernameErr = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.avatarBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nameErr1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.surnameErr1)).BeginInit();
@@ -336,11 +337,24 @@
             this.userCount.TabIndex = 45;
             this.userCount.Text = "label2";
             // 
+            // usernameErr
+            // 
+            this.usernameErr.AutoSize = true;
+            this.usernameErr.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.usernameErr.ForeColor = System.Drawing.Color.Red;
+            this.usernameErr.Location = new System.Drawing.Point(237, 363);
+            this.usernameErr.Name = "usernameErr";
+            this.usernameErr.Size = new System.Drawing.Size(305, 32);
+            this.usernameErr.TabIndex = 46;
+            this.usernameErr.Text = "USERNAME ALREADY USED";
+            this.usernameErr.Visible = false;
+            // 
             // Register
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.usernameErr);
             this.Controls.Add(this.userCount);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.imagePath);
@@ -408,5 +422,6 @@
         private Label imagePath;
         private Label label1;
         private Label userCount;
+        private Label usernameErr;
     }
 }

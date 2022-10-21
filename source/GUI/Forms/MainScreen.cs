@@ -10,7 +10,6 @@ using System.Windows.Forms;
 
 namespace OOP3.source.GUI.Forms
 {
-    using OOP3.source.CLI;
     using OOP3.source.Core;
     using OOP3.source.Log;
     using OOP3.source.Input;
@@ -24,6 +23,8 @@ namespace OOP3.source.GUI.Forms
             SessionManager.Instance.openForms.Add(new Login());
             SessionManager.Instance.openForms.Add(new Register());
             SessionManager.Instance.openForms.Add(new PostLogin());
+            SessionManager.Instance.openForms.Add(new AdminPostLogin());
+            SessionManager.Instance.openForms.Add(new RemoveUsers());
         }
 
         private void loginButton1_Click(object sender, EventArgs e)
@@ -36,11 +37,6 @@ namespace OOP3.source.GUI.Forms
         {
             SessionManager.Instance.openForms[0].Hide();
             SessionManager.Instance.openForms[2].Show();
-        }
-
-        private void MainScreen_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

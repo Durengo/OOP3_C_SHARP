@@ -14,8 +14,7 @@ namespace OOP3.source.User
         private string AccountName;
         private string AccountPassword;
         private AccountType AccountType;
-        private string AvatarImage;
-
+        private Bitmap AvatarImage;
         public User()
         : base("ANONYMOUS", "UNDEFINED", new DateOnly(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day))
         {
@@ -36,7 +35,7 @@ namespace OOP3.source.User
             AccountName = username;
             AccountPassword = password;
             AccountType = AccountType.REGISTERED;
-            AvatarImage = avatar;
+            AvatarImage = new Bitmap (avatar);
             //CopyImageToRelativePath(avatar);
         }
         public User(string username, string password, AccountType type, string name, string surname, DateOnly birthday)
@@ -47,31 +46,38 @@ namespace OOP3.source.User
             AccountType = type;
         }
 
+        public override string ToString()
+        {
+            return Username + " " + Name + " " + Surname + " " + BirthDate;
+        }
+
         public string Username
         {
             get { return AccountName; }
-            set { AccountName = value;}
+            //set { AccountName = value;}
         }
         public string Password
         {
             get { return AccountPassword; }
-            set { AccountPassword = value; }
+        }
+        public bool ChangePassword(string currentPass, string newPass)
+        {
+            if(currentPass == AccountPassword)
+            {
+                AccountPassword = newPass;
+                return true;
+            }
+            return false;
         }
         public AccountType Type
         {
             get { return AccountType; }
-            set { Type = value; }
+            //set { Type = value; }
         }
-        public string Avatar
+        public Bitmap Avatar
         {
             get { return AvatarImage; }
-            set { CopyImageToRelativePath(value); AvatarImage = value; }
-        } 
-        private void CopyImageToRelativePath(string path)
-        {
-            string relativePath = Directory.GetCurrentDirectory();
-            relativePath = relativePath + @"\data\images";
-            File.Copy(@path, @relativePath);
+            set { AvatarImage = value;}
         }
     }
 }

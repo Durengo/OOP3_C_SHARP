@@ -22,23 +22,22 @@ namespace OOP3.source.GUI.Forms
         {
             if(SessionManager.Instance.Login(usernameBox.Text, passwordBox.Text))
             {
-                checkBox1.Checked = true;
                 usernameBox.Text = "";
                 passwordBox.Text = "";
                 if(SessionManager.Instance.currentUser.Type == User.AccountType.ADMINISTRATOR)
                 {
                     SessionManager.Instance.openForms[1].Hide();
-                    SessionManager.Instance.openForms[0].Show();
+                    var Form = (AdminPostLogin)SessionManager.Instance.openForms[4];
+                    Form.UpdateUserText();
+                    SessionManager.Instance.openForms[4].Show();
                 }
                 else
                 {
                     SessionManager.Instance.openForms[1].Hide();
+                    var Form = (PostLogin)SessionManager.Instance.openForms[3];
+                    Form.UpdateUserText();
                     SessionManager.Instance.openForms[3].Show();
                 }
-            }
-            else
-            {
-                checkBox1.Checked = false;
             }
         }
 
