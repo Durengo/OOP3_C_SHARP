@@ -13,9 +13,11 @@ namespace OOP3.source.GUI.Forms
     using OOP3.source.Core;
     using OOP3.source.Input;
     using OOP3.source.User;
+
     public partial class Register : Form
     {
         private string ImageFullPath = "";
+
         public Register()
         {
             InitializeComponent();
@@ -30,10 +32,6 @@ namespace OOP3.source.GUI.Forms
 
         private void registerButton1_Click(object sender, EventArgs e)
         {
-            //DEBUG
-            //checkInstance.Checked = SessionManager.Instance.isInstance();
-            //
-
             bool[] conditions = new bool[5];
 
             if (!InputValidation.NameValidation(nameBox.Text))
@@ -51,16 +49,11 @@ namespace OOP3.source.GUI.Forms
             var month = int.Parse(datePicker.SelectionRange.Start.ToString("MM"));
             var day = int.Parse(datePicker.SelectionRange.Start.ToString("dd"));
             var selectedDate = new DateTime(year, month, day);
-            var ageDay = DateTime.Now.Day - selectedDate.Day;
-            var ageMonth = DateTime.Now.Month - selectedDate.Month;
-            var ageYear = DateTime.Now.Year - selectedDate.Year;
-            if (ageDay <= 0)
-                ageMonth--;
-            if (ageMonth <= 0)
-                ageYear--;
-            if (ageYear < 14)
+            if (selectedDate >= DateTime.Today.AddYears(-14))
+            {
                 conditions[2] = true;
                 dateErr1.Show();
+            }
             //DATE
 
             if (conditions[0] || conditions[1] || conditions[2])
@@ -73,49 +66,33 @@ namespace OOP3.source.GUI.Forms
             }
             else
             {
-                if(ImageFullPath != "")
+                if (
+                    !SessionManager.Instance.CreateUser(
+                        usernameBox.Text,
+                        passwordBox.Text,
+                        ImageFullPath,
+                        nameBox.Text,
+                        surnameBox.Text,
+                        new DateOnly(year, month, day)
+                    )
+                )
                 {
-                    if(!SessionManager.Instance.CreateUser(usernameBox.Text, passwordBox.Text, ImageFullPath, nameBox.Text, surnameBox.Text, new DateOnly(int.Parse(datePicker.SelectionRange.Start.ToString("yyyy")), int.Parse(datePicker.SelectionRange.Start.ToString("MM")), int.Parse(datePicker.SelectionRange.Start.ToString("dd")))))
-                    {
-                        usernameErr.Show();
-                    }
-                    else
-                    {
-                        nameErr1.Hide();
-                        surnameErr1.Hide();
-                        dateErr1.Hide();
-                        usernameErr.Hide();
-                        nameDisplay.Text = nameBox.Text;
-                        surnameDisplay.Text = surnameBox.Text;
-                        dateDisplay.Text = datePicker.SelectionRange.Start.ToString("yyyy-MM-dd");
-                        usernameDisplay.Text = usernameBox.Text;
-                        passwordDisplay.Text = passwordBox.Text;
-                    }
+                    usernameErr.Show();
                 }
                 else
                 {
-                    if(!SessionManager.Instance.CreateUser(usernameBox.Text, passwordBox.Text, nameBox.Text, surnameBox.Text, new DateOnly(int.Parse(datePicker.SelectionRange.Start.ToString("yyyy")), int.Parse(datePicker.SelectionRange.Start.ToString("MM")), int.Parse(datePicker.SelectionRange.Start.ToString("dd")))))
-                    {
-                        usernameErr.Show();
-                    }
-                    else
-                    {
-                        nameErr1.Hide();
-                        surnameErr1.Hide();
-                        dateErr1.Hide();
-                        usernameErr.Hide();
-                        nameDisplay.Text = nameBox.Text;
-                        surnameDisplay.Text = surnameBox.Text;
-                        dateDisplay.Text = datePicker.SelectionRange.Start.ToString("yyyy-MM-dd");
-                        usernameDisplay.Text = usernameBox.Text;
-                        passwordDisplay.Text = passwordBox.Text;
-                    }
+                    nameErr1.Hide();
+                    surnameErr1.Hide();
+                    dateErr1.Hide();
+                    usernameErr.Hide();
+                    nameDisplay.Text = nameBox.Text;
+                    surnameDisplay.Text = surnameBox.Text;
+                    dateDisplay.Text = datePicker.SelectionRange.Start.ToString("yyyy-MM-dd");
+                    usernameDisplay.Text = usernameBox.Text;
+                    passwordDisplay.Text = passwordBox.Text;
                 }
-                
-                
             }
             userCount.Text = SessionManager.Instance.users.Count.ToString();
-
         }
 
         private void imageButton_Click(object sender, EventArgs e)
@@ -127,8 +104,6 @@ namespace OOP3.source.GUI.Forms
                 avatarBox.ImageLocation = selectedFile;
                 imagePath.Text = selectedFile;
                 ImageFullPath = selectedFile;
-                //avatarBox.Image = Image.FromFile(selectedFile);
-                //avatarBox.Image = System.Drawing.Image.FromFile(selectedFile);\
             }
         }
 
@@ -143,13 +118,17 @@ namespace OOP3.source.GUI.Forms
         {
             for (int i = 0; i < SessionManager.Instance.openForms.Count; i++)
             {
-                SessionManager.Instance.openForms[SessionManager.Instance.openForms.Count - 1 - i].Close();
+                SessionManager.Instance.openForms[
+                    SessionManager.Instance.openForms.Count - 1 - i
+                ].Close();
             }
         }
 
         private void nameErr1_Click(object sender, EventArgs e)
         {
-            PopUpError popup = new PopUpError("The name must start with a capital letter, only 1 capital letter, no spaces, no numbers");
+            PopUpError popup = new PopUpError(
+                "The name must start with a capital letter, only 1 capital letter, no spaces, no numbers"
+            );
             DialogResult dialogresult = popup.ShowDialog();
             // if (dialogresult == DialogResult.OK)
             // {
@@ -164,14 +143,18 @@ namespace OOP3.source.GUI.Forms
 
         private void surnameErr1_Click(object sender, EventArgs e)
         {
-            PopUpError popup = new PopUpError("The name must start with a capital letter, only 1 capital letter, no spaces, no numbers");
+            PopUpError popup = new PopUpError(
+                "The name must start with a capital letter, only 1 capital letter, no spaces, no numbers"
+            );
             DialogResult dialogresult = popup.ShowDialog();
             popup.Dispose();
         }
 
         private void dateErr1_Click(object sender, EventArgs e)
         {
-            PopUpError popup = new PopUpError("You cannot register if you are not at least 14 years old.");
+            PopUpError popup = new PopUpError(
+                "You cannot register if you are not at least 14 years old."
+            );
             DialogResult dialogresult = popup.ShowDialog();
             popup.Dispose();
         }

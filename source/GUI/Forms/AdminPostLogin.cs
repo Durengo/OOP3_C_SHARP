@@ -11,12 +11,14 @@ using System.Windows.Forms;
 namespace OOP3.source.GUI.Forms
 {
     using source.Core;
+
     public partial class AdminPostLogin : Form
     {
         public AdminPostLogin()
         {
             InitializeComponent();
         }
+
         public void UpdateUserText()
         {
             nameDisplay.Text = SessionManager.Instance.currentUser.Name;
@@ -31,7 +33,9 @@ namespace OOP3.source.GUI.Forms
         {
             for (int i = 0; i < SessionManager.Instance.openForms.Count; i++)
             {
-                SessionManager.Instance.openForms[SessionManager.Instance.openForms.Count - 1 - i].Close();
+                SessionManager.Instance.openForms[
+                    SessionManager.Instance.openForms.Count - 1 - i
+                ].Close();
             }
         }
 

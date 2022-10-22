@@ -11,11 +11,9 @@ using System.Windows.Forms;
 namespace OOP3.source.GUI.Forms
 {
     using OOP3.source.Core;
-    using OOP3.source.Log;
-    using OOP3.source.Input;
+
     public partial class MainScreen : Form
     {
-
         public MainScreen()
         {
             InitializeComponent();

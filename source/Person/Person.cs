@@ -22,12 +22,14 @@ namespace OOP3.source.Person
 
         private void CalculateAge()
         {
-            CurrentAge = DateTime.Today.Year - DateOfBirth.Year;
-        }
-
-        public string Info()
-        {
-            return FirstName + "; " + LastName + "; " + DateOfBirth + "; " + CurrentAge + ";";
+            var day = DateTime.Today.Day - DateOfBirth.Day;
+            var month = DateTime.Today.Month - DateOfBirth.Month;
+            var year = DateTime.Today.Year - DateOfBirth.Year;
+            if (day < 0)
+                month--;
+            if (month < 0)
+                year--;
+            CurrentAge = DateTime.Today.Year - year;
         }
 
         // Getters & Setters
@@ -50,9 +52,16 @@ namespace OOP3.source.Person
         }
         public int Age
         {
-            get { CalculateAge(); return CurrentAge; }
-            private set { CurrentAge = value; CalculateAge(); }
+            get
+            {
+                CalculateAge();
+                return CurrentAge;
+            }
+            private set
+            {
+                CurrentAge = value;
+                CalculateAge();
+            }
         }
-
     }
 }

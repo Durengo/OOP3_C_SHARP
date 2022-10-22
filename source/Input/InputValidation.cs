@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 namespace OOP3.source.Input
 {
     using OOP3.source.Log;
+
     public class InputValidation
     {
         public static int GIBI(string input)
@@ -36,6 +37,7 @@ namespace OOP3.source.Input
                 }
             }
         }
+
         public static int GIBI(int min, int max, string input)
         {
             while (true)
@@ -47,10 +49,13 @@ namespace OOP3.source.Input
                 }
                 else
                 {
-                    Log.ERROR($"EXCEPTION! INPUT OUT OF RANGE: {converted} in [MIN]{min}-[MAX]{max}\nTRY AGAIN");
+                    Log.ERROR(
+                        $"EXCEPTION! INPUT OUT OF RANGE: {converted} in [MIN]{min}-[MAX]{max}\nTRY AGAIN"
+                    );
                 }
             }
         }
+
         public static double GIBD(string input)
         {
             double converted;
@@ -79,6 +84,7 @@ namespace OOP3.source.Input
                 }
             }
         }
+
         public static double GIBD(int min, int max, string input)
         {
             while (true)
@@ -90,10 +96,13 @@ namespace OOP3.source.Input
                 }
                 else
                 {
-                    Log.ERROR($"EXCEPTION! INPUT OUT OF RANGE: {converted} in [MIN]{min}-[MAX]{max}\nTRY AGAIN");
+                    Log.ERROR(
+                        $"EXCEPTION! INPUT OUT OF RANGE: {converted} in [MIN]{min}-[MAX]{max}\nTRY AGAIN"
+                    );
                 }
             }
         }
+
         public static float GIBF(string input)
         {
             float converted;
@@ -122,6 +131,7 @@ namespace OOP3.source.Input
                 }
             }
         }
+
         public static float GIBF(int min, int max, string input)
         {
             while (true)
@@ -133,42 +143,57 @@ namespace OOP3.source.Input
                 }
                 else
                 {
-                    Log.ERROR($"EXCEPTION! INPUT OUT OF RANGE: {converted} in [MIN]{min}-[MAX]{max}\nTRY AGAIN");
+                    Log.ERROR(
+                        $"EXCEPTION! INPUT OUT OF RANGE: {converted} in [MIN]{min}-[MAX]{max}\nTRY AGAIN"
+                    );
                 }
             }
         }
+
         public static bool IsWhiteSpace(string text)
         {
             return text.All(c => char.IsWhiteSpace(c));
         }
+
         public static bool FoundWhiteSpace(string text)
         {
             return text.Any(c => Char.IsWhiteSpace(c));
         }
+
         public static bool IsLetters(string text)
         {
             return text.All(c => char.IsLetter(c));
         }
+
         public static bool IsNumbers(string text)
         {
             return text.All(c => char.IsNumber(c));
         }
+
         public static int CapitalLetterCount(string text)
         {
             int count = 0;
             for (int i = 0; i < text.Length; i++)
             {
-                if (char.IsUpper(text[i])) count++;
+                if (char.IsUpper(text[i]))
+                    count++;
             }
             return count;
         }
+
         public static bool NameValidation(string name)
         {
-            if (name != "" && IsLetters(name) && CapitalLetterCount(name) == 1 && !FoundWhiteSpace(name))
+            if (
+                name != ""
+                && IsLetters(name)
+                && CapitalLetterCount(name) == 1
+                && !FoundWhiteSpace(name)
+            )
             {
                 return true;
             }
-            else return false;
+            else
+                return false;
         }
     }
 }

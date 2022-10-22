@@ -113,6 +113,8 @@
             this.Controls.Add(this.usernameBox);
             this.Controls.Add(this.loginButton1);
             this.Controls.Add(this.backButton1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Login";
             this.Text = "Login";
             this.Disposed += new System.EventHandler(this.Login_Closing);

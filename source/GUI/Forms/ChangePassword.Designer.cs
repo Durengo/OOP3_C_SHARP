@@ -161,6 +161,8 @@
             this.Controls.Add(this.currentPass);
             this.Controls.Add(this.back);
             this.Controls.Add(this.changePass);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "ChangePassword";
             this.Text = "ChangePassword";
             ((System.ComponentModel.ISupportInitialize)(this.err1)).EndInit();

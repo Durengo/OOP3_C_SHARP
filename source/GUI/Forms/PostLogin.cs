@@ -11,12 +11,14 @@ using System.Windows.Forms;
 namespace OOP3.source.GUI.Forms
 {
     using source.Core;
+
     public partial class PostLogin : Form
     {
         public PostLogin()
         {
             InitializeComponent();
         }
+
         public void UpdateUserText()
         {
             nameDisplay.Text = SessionManager.Instance.currentUser.Name;
@@ -26,6 +28,7 @@ namespace OOP3.source.GUI.Forms
             passwordDisplay.Text = SessionManager.Instance.currentUser.Password;
             avatarBox.Image = SessionManager.Instance.currentUser.Avatar;
         }
+
         private void logoutButton1_Click(object sender, EventArgs e)
         {
             SessionManager.Instance.openForms[3].Hide();
@@ -45,13 +48,15 @@ namespace OOP3.source.GUI.Forms
         {
             for (int i = 0; i < SessionManager.Instance.openForms.Count; i++)
             {
-                SessionManager.Instance.openForms[SessionManager.Instance.openForms.Count - 1 - i].Close();
+                SessionManager.Instance.openForms[
+                    SessionManager.Instance.openForms.Count - 1 - i
+                ].Close();
             }
         }
 
         private void passwordShow_CheckedChanged(object sender, EventArgs e)
         {
-            if(passwordShow.CheckState == CheckState.Unchecked)
+            if (passwordShow.CheckState == CheckState.Unchecked)
             {
                 passwordDisplay.UseSystemPasswordChar = true;
             }

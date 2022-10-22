@@ -79,6 +79,8 @@
             this.Controls.Add(this.removeButton1);
             this.Controls.Add(this.backButton1);
             this.Controls.Add(this.userList);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "RemoveUsers";
             this.Text = "RemoveUsers";
             this.ResumeLayout(false);

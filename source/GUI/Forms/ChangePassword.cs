@@ -11,6 +11,7 @@ using System.Windows.Forms;
 namespace OOP3.source.GUI.Forms
 {
     using source.Core;
+
     public partial class ChangePassword : Form
     {
         public ChangePassword()
@@ -26,15 +27,21 @@ namespace OOP3.source.GUI.Forms
             err1.Hide();
             err2.Hide();
             err3.Hide();
-            if(repeatPass.Text == newPass.Text)
+            if (repeatPass.Text == newPass.Text)
             {
-                if(SessionManager.Instance.currentUser.ChangePassword(currentPass.Text, newPass.Text))
+                if (
+                    SessionManager.Instance.currentUser.ChangePassword(
+                        currentPass.Text,
+                        newPass.Text
+                    )
+                )
                 {
-                    for(int i = 0; i < SessionManager.Instance.openForms.Count; i++)
+                    for (int i = 0; i < SessionManager.Instance.openForms.Count; i++)
                     {
                         SessionManager.Instance.openForms[i].Hide();
                     }
                     SessionManager.Instance.openForms[0].Show();
+                    SessionManager.Instance.Logout();
                     this.Dispose();
                 }
                 err1.Show();
@@ -66,7 +73,9 @@ namespace OOP3.source.GUI.Forms
 
         private void err3_Click(object sender, EventArgs e)
         {
-            PopUpError popup = new PopUpError("This password must be the same as the previous password.");
+            PopUpError popup = new PopUpError(
+                "This password must be the same as the previous password."
+            );
             DialogResult dialogresult = popup.ShowDialog();
             popup.Dispose();
         }

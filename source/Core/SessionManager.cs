@@ -9,6 +9,7 @@ namespace OOP3.source.Core
     using OOP3.source.Log;
     using OOP3.source.Person;
     using OOP3.source.User;
+
     class SessionManager
     {
         private static SessionManager instance = null;
@@ -20,9 +21,24 @@ namespace OOP3.source.Core
 
         private SessionManager()
         {
-            users.Add(new User("test", "test", "Testname", "Testsurname", new DateOnly(2000, 03, 23)));
-            users.Add(new User("admin", "admin", AccountType.ADMINISTRATOR, "admin", "admin", new DateOnly(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day)));
-            users.Add(new User());
+            users.Add(
+                new Registered(
+                    "test",
+                    "test",
+                    "Testname",
+                    "Testsurname",
+                    new DateOnly(2000, 03, 23)
+                )
+            );
+            users.Add(
+                new Administrator(
+                    "admin",
+                    "admin",
+                    "admin",
+                    "admin",
+                    new DateOnly(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day)
+                )
+            );
 
             Log.INFO("{0}", users[0].Age);
         }
@@ -31,48 +47,46 @@ namespace OOP3.source.Core
         {
             for (int i = 0; i < users.Count; i++)
             {
-                if(name == users[i].Username && pass == users[i].Password && users[i].Type != AccountType.ANONYMOUS)
+                if (
+                    name == users[i].Username
+                    && pass == users[i].Password
+                    && users[i].UserAccountType != AccountType.ANONYMOUS
+                )
                 {
                     currentUser = users[i];
                     UserId = i;
                     return true;
                 }
             }
-            // if(name != user.Username)
-            // {
-            //     Log.ERROR($"Username is incorrect!");
-            //     return false;
-            // }
-            // if(pass != user.Password)
-            // {
-            //     Log.ERROR($"Password is incorrect!");
-            //     return false;
-            // }
             return false;
         }
-
-        public bool CreateUser(string username, string password, string name, string surname, DateOnly birthday)
+        public bool CreateUser(
+            string username,
+            string password,
+            string imagePath,
+            string name,
+            string surname,
+            DateOnly birthday
+        )
         {
-            for(int i = 0; i < users.Count; i++)
+            for (int i = 0; i < users.Count; i++)
             {
-                if(users[i].Username == username)
+                if (users[i].Username == username)
                 {
                     return false;
                 }
             }
-            SessionManager.Instance.users.Add(new User(username, password, name, surname, birthday));
-            return true;
-        }
-        public bool CreateUser(string username, string password, string imagePath, string name, string surname, DateOnly birthday)
-        {
-            for(int i = 0; i < users.Count; i++)
+            if(imagePath == "")
             {
-                if(users[i].Username == username)
-                {
-                    return false;
-                }
+            SessionManager.Instance.users.Add(
+                new Registered(username, password, name, surname, birthday)
+            );
             }
-            SessionManager.Instance.users.Add(new User(username, password, imagePath, name, surname, birthday));
+            else{
+            SessionManager.Instance.users.Add(
+                new Registered(username, password, imagePath, name, surname, birthday)
+            );
+            }
             return true;
         }
 
@@ -84,18 +98,18 @@ namespace OOP3.source.Core
 
         public bool isInstance()
         {
-            if (instance == null) return false;
+            if (instance == null)
+                return false;
             return true;
         }
 
-        
         public static SessionManager Instance
         {
             get
             {
-                lock(padlock)
+                lock (padlock)
                 {
-                    if(instance == null)
+                    if (instance == null)
                     {
                         instance = new SessionManager();
                     }
@@ -103,6 +117,5 @@ namespace OOP3.source.Core
                 }
             }
         }
-
     }
 }

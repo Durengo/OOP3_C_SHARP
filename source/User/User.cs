@@ -7,43 +7,45 @@ using System.Threading.Tasks;
 namespace OOP3.source.User
 {
     using source.Person;
-    public enum AccountType {ADMINISTRATOR = 0, ANONYMOUS = 1, REGISTERED = 2};
-    
+
+    public enum AccountType
+    {
+        ADMINISTRATOR = 0,
+        ANONYMOUS = 1,
+        REGISTERED = 2
+    };
+
     class User : Person
     {
         private string AccountName;
         private string AccountPassword;
         private AccountType AccountType;
         private Bitmap AvatarImage;
-        public User()
-        : base("ANONYMOUS", "UNDEFINED", new DateOnly(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day))
-        {
-            AccountName = "NULL";
-            AccountPassword = "NULL";
-            AccountType = AccountType.ANONYMOUS;
-        }
-        public User(string username, string password, string name, string surname, DateOnly birthday)
-        : base(name, surname, birthday)
-        {
-            AccountName = username;
-            AccountPassword = password;
-            AccountType = AccountType.REGISTERED;
-        }
-        public User(string username, string password, string avatar, string name, string surname, DateOnly birthday)
-        : base(name, surname, birthday)
+
+        public User(
+            string username,
+            string password,
+            string name,
+            string surname,
+            DateOnly birthday
+        ) : base(name, surname, birthday)
         {
             AccountName = username;
             AccountPassword = password;
-            AccountType = AccountType.REGISTERED;
-            AvatarImage = new Bitmap (avatar);
-            //CopyImageToRelativePath(avatar);
         }
-        public User(string username, string password, AccountType type, string name, string surname, DateOnly birthday)
-        : base(name, surname, birthday)
+
+        public User(
+            string username,
+            string password,
+            string avatar,
+            string name,
+            string surname,
+            DateOnly birthday
+        ) : base(name, surname, birthday)
         {
             AccountName = username;
             AccountPassword = password;
-            AccountType = type;
+            AvatarImage = new Bitmap(avatar);
         }
 
         public override string ToString()
@@ -54,30 +56,35 @@ namespace OOP3.source.User
         public string Username
         {
             get { return AccountName; }
-            //set { AccountName = value;}
+            set { AccountName = value; }
         }
         public string Password
         {
             get { return AccountPassword; }
         }
+
         public bool ChangePassword(string currentPass, string newPass)
         {
-            if(currentPass == AccountPassword)
+            if (currentPass == AccountPassword)
             {
                 AccountPassword = newPass;
                 return true;
             }
             return false;
         }
-        public AccountType Type
+
+        public AccountType UserAccountType
         {
             get { return AccountType; }
-            //set { Type = value; }
+        }
+        protected AccountType SetUserAccountType
+        {
+            set { AccountType = value; }
         }
         public Bitmap Avatar
         {
             get { return AvatarImage; }
-            set { AvatarImage = value;}
+            set { AvatarImage = value; }
         }
     }
 }

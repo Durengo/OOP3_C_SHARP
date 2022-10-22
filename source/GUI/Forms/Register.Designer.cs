@@ -322,7 +322,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(476, 290);
+            this.label1.Location = new System.Drawing.Point(662, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(66, 15);
             this.label1.TabIndex = 44;
@@ -331,11 +331,11 @@
             // userCount
             // 
             this.userCount.AutoSize = true;
-            this.userCount.Location = new System.Drawing.Point(547, 290);
+            this.userCount.Location = new System.Drawing.Point(734, 9);
             this.userCount.Name = "userCount";
-            this.userCount.Size = new System.Drawing.Size(38, 15);
+            this.userCount.Size = new System.Drawing.Size(13, 15);
             this.userCount.TabIndex = 45;
-            this.userCount.Text = "label2";
+            this.userCount.Text = "x";
             // 
             // usernameErr
             // 
@@ -381,6 +381,8 @@
             this.Controls.Add(this.surnameLabel);
             this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.datePicker);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Register";
             this.Text = "Register";
             this.Disposed += new System.EventHandler(this.Register_Closing);

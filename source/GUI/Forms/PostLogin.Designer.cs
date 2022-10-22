@@ -261,6 +261,8 @@
             this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.logoutButton1);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "PostLogin";
             this.Text = "PostLogin";
             this.Disposed += new System.EventHandler(this.PostLogin_Closing);

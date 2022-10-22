@@ -18,14 +18,8 @@ namespace OOP3.source.GUI.Forms
             errText.Text = text;
         }
 
-        private void errText_Click(object sender, EventArgs e)
-        {
+        private void errText_Click(object sender, EventArgs e) { }
 
-        }
-
-        private void okButton_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void okButton_Click(object sender, EventArgs e) { }
     }
 }

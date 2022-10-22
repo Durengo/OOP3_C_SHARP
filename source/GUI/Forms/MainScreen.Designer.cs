@@ -78,6 +78,8 @@
             this.Controls.Add(this.registerButton1);
             this.Controls.Add(this.loginButton1);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "MainScreen";
             this.Text = "MainScreen";
             this.ResumeLayout(false);

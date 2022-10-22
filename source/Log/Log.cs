@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 namespace OOP3.source.Log
 {
     using System.Diagnostics;
+
     public static class Log
     {
         //ERROR
@@ -17,6 +18,7 @@ namespace OOP3.source.Log
 
             Console.ResetColor();
         }
+
         public static void ERROR(bool state)
         {
             Console.ForegroundColor = ConsoleColor.Red;
@@ -25,6 +27,7 @@ namespace OOP3.source.Log
 
             Console.ResetColor();
         }
+
         public static void ERROR(string text, bool state)
         {
             Console.ForegroundColor = ConsoleColor.Red;
@@ -33,6 +36,7 @@ namespace OOP3.source.Log
 
             Console.ResetColor();
         }
+
         public static void ERROR(int number)
         {
             Console.ForegroundColor = ConsoleColor.Red;
@@ -41,6 +45,7 @@ namespace OOP3.source.Log
 
             Console.ResetColor();
         }
+
         public static void ERROR(string text, int number)
         {
             Console.ForegroundColor = ConsoleColor.Red;
@@ -49,6 +54,7 @@ namespace OOP3.source.Log
 
             Console.ResetColor();
         }
+
         public static void ERROR(string text, Exception e)
         {
             Console.ForegroundColor = ConsoleColor.Red;
@@ -57,6 +63,7 @@ namespace OOP3.source.Log
 
             Console.ResetColor();
         }
+
         public static void ERROR(Exception e)
         {
             Console.ForegroundColor = ConsoleColor.Red;
@@ -65,6 +72,7 @@ namespace OOP3.source.Log
 
             Console.ResetColor();
         }
+
         //ERROR
         //WARN
         public static void WARN(string text)
@@ -75,6 +83,7 @@ namespace OOP3.source.Log
 
             Console.ResetColor();
         }
+
         public static void WARN(bool state)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -83,6 +92,7 @@ namespace OOP3.source.Log
 
             Console.ResetColor();
         }
+
         public static void WARN(string text, bool state)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -91,6 +101,7 @@ namespace OOP3.source.Log
 
             Console.ResetColor();
         }
+
         public static void WARN(int number)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -99,6 +110,7 @@ namespace OOP3.source.Log
 
             Console.ResetColor();
         }
+
         public static void WARN(string text, int number)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -107,6 +119,7 @@ namespace OOP3.source.Log
 
             Console.ResetColor();
         }
+
         //WARN
         //INFO
         public static void INFO(string text)
@@ -117,6 +130,7 @@ namespace OOP3.source.Log
 
             Console.ResetColor();
         }
+
         public static void INFO(bool state)
         {
             Console.ForegroundColor = ConsoleColor.Green;
@@ -125,6 +139,7 @@ namespace OOP3.source.Log
 
             Console.ResetColor();
         }
+
         public static void INFO(string text, bool state)
         {
             Console.ForegroundColor = ConsoleColor.Green;
@@ -133,6 +148,7 @@ namespace OOP3.source.Log
 
             Console.ResetColor();
         }
+
         public static void INFO(int number)
         {
             Console.ForegroundColor = ConsoleColor.Green;
@@ -141,6 +157,7 @@ namespace OOP3.source.Log
 
             Console.ResetColor();
         }
+
         public static void INFO(string text, int number)
         {
             Console.ForegroundColor = ConsoleColor.Green;
@@ -149,6 +166,7 @@ namespace OOP3.source.Log
 
             Console.ResetColor();
         }
+
         //INFO
         //TRACE
         public static void TRACE(string text)
@@ -157,30 +175,35 @@ namespace OOP3.source.Log
 
             Console.ResetColor();
         }
+
         public static void TRACE(bool state)
         {
             Console.WriteLine($"{state}");
 
             Console.ResetColor();
         }
+
         public static void TRACE(string text, bool state)
         {
             Console.WriteLine($"{text} {state}");
 
             Console.ResetColor();
         }
+
         public static void TRACE(int number)
         {
             Console.WriteLine($"{number}");
 
             Console.ResetColor();
         }
+
         public static void TRACE(string text, int number)
         {
             Console.WriteLine($"{text} {number}");
 
             Console.ResetColor();
         }
+
         //TRACE
         //FATAL
         public static void FATAL(string text)
@@ -191,6 +214,7 @@ namespace OOP3.source.Log
 
             Console.ResetColor();
         }
+
         public static void FATAL(bool state)
         {
             Console.ForegroundColor = ConsoleColor.Magenta;
@@ -199,6 +223,7 @@ namespace OOP3.source.Log
 
             Console.ResetColor();
         }
+
         public static void FATAL(bool state, string text)
         {
             Console.ForegroundColor = ConsoleColor.Magenta;

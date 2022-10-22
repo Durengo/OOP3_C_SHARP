@@ -63,6 +63,8 @@
             this.ClientSize = new System.Drawing.Size(284, 121);
             this.Controls.Add(this.errText);
             this.Controls.Add(this.okButton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "PopUpError";
             this.Text = "PopUpError";
             this.ResumeLayout(false);
