@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OOP3.source.GUI.Forms
+namespace OOP4.source.GUI.Forms
 {
     using source.Core;
 

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OOP3.source.Input
+namespace OOP4.source.Input
 {
-    using OOP3.source.Log;
+    using OOP4.source.Log;
 
     public static class Input
     {

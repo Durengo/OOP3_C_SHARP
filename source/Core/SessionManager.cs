@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OOP3.source.Core
+namespace OOP4.source.Core
 {
-    using OOP3.source.Log;
-    using OOP3.source.Person;
-    using OOP3.source.User;
+    using OOP4.source.Log;
+    using OOP4.source.Person;
+    using OOP4.source.User;
 
     class SessionManager
     {

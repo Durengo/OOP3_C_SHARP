@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OOP3.source.Log
+namespace OOP4.source.Log
 {
     using System.Diagnostics;
 

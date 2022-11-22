@@ -1,4 +1,4 @@
-﻿namespace OOP3.source.GUI.Forms
+﻿namespace OOP4.source.GUI.Forms
 {
     partial class PostLogin
     {
