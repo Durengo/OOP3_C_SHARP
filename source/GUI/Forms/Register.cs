@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OOP4.source.GUI.Forms
+namespace OOP3.source.GUI.Forms
 {
-    using OOP4.source.Core;
-    using OOP4.source.Input;
-    using OOP4.source.User;
+    using OOP3.source.Core;
+    using OOP3.source.Input;
+    using OOP3.source.User;
 
     public partial class Register : Form
     {

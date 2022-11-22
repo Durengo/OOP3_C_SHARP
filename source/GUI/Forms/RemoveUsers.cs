@@ -8,9 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OOP4.source.GUI.Forms
+namespace OOP3.source.GUI.Forms
 {
-    using OOP4.source.Core;
+    using OOP3.source.Core;
 
     public partial class RemoveUsers : Form
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OOP4.source.Person
+namespace OOP3.source.Person
 {
     public class Person
     {

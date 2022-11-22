@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
-using OOP4.source.GUI.Forms;
+using OOP3.source.GUI.Forms;
 
-namespace OOP4
+namespace OOP3
 {
     class Program
     {

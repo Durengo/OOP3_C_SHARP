@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace OOP4.source.Input
+namespace OOP3.source.Input
 {
-    using OOP4.source.Log;
+    using OOP3.source.Log;
 
     public class InputValidation
     {
